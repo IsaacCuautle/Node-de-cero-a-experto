@@ -3,7 +3,7 @@ const nombre = 'wolvarine'
 
 if(true){
     const nombre = 'magneto';
-    console.log(nombre);
 } 
+console.log(nombre);
  
 console.log(nombre);
