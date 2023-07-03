@@ -1,0 +1,15 @@
+{
+  "name": "03-bases-node",
+  "version": "1.0.0",
+  "description": "Aplicacion para crear tablas de multiplicar y grabarlas en un archivo de texto",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "base3": "node app --base=3"
+  },
+  "author": "Cuautle Delgadillo Luis Isaac",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
