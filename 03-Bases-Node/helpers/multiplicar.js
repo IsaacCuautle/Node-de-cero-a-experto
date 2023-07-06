@@ -5,9 +5,11 @@ const crearArchivoDeTabla = async(base = 1,listar = false,hasta=10) => {
     /// ASYNC ///
     try {
         let salida = '';
+
         for (let i = 1; i <= hasta; i++) {
             salida += `${base} * ${i} = ${base*i}\n`
         }
+
         if (listar) {
 
             console.log(`==============================
@@ -15,11 +17,12 @@ const crearArchivoDeTabla = async(base = 1,listar = false,hasta=10) => {
             console.log(salida.yellow);
         }
         
-        fs.writeFileSync(`Tabla-del-${base}.txt`,salida)
+        fs.writeFileSync(`./salida/Tabla-del-${base}-limite-${hasta}.txt`,salida)
         
-        return(`Tabla-del-${base}.txt`);  
+        return(`Tabla-del-${base}-limite-${hasta}.txt`);  
+
     } catch (error) {
-        throw error
+        throw error;
     }
 
 
