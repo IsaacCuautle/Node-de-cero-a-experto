@@ -9,46 +9,48 @@ const menuOptions = [
         choices: [
             {
                 value: '1',
-                name: '1.Crear tareas'
+                name: `${"1.".green}Crear tareas`
             },
             {
                 value: '2',
-                name: '2.Listar tareas'
+                name: `${"2.".green}Listar tareas`
             },
             {
                 value: '3',
-                name: '3.Listar tareas completadas'
+                name: `${"3.".green}Listar tareas completadas`
             },
             {
                 value: '4',
-                name: '4.Listar tareas pendientes'
+                name: `${"4.".green}Listar tareas pendientes`
             },
             {
                 value: '5',
-                name: '5.Completar Tarea(s)'
+                name: `${"5.".green}Completar Tarea(s)`
             },
             {
                 value: '6',
-                name: '6.Borrar tarea(s)'
+                name: `${"6.".green}Borrar tarea(s)`
             },
             {
                 value: '0',
-                name: '0.Salir'
+                name: `${"0.".green}Salir`
             },
         ]
     }
 ]
 
+
+// Imprime el menu de opciones en consola
 const inquirerMenu = async() => {
     console.clear();
 
     console.log("============================".green);
-    console.log("   Seleccione una opcion".green);
+    console.log("   Seleccione una opcion".white);
     console.log("============================\n".green);
 
     const {opcion} = await inquirer.prompt(menuOptions);
-
-    return opcion;
+    
+    return opcion 
 }
 
 const pausa = async() => {
