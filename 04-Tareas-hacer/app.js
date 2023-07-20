@@ -1,5 +1,5 @@
 import { guardarDB, leerDB } from './helpers/guardarArchivo.js';
-import { inquirerMenu, pausa, leerInput } from './helpers/inquirer.js';
+import { inquirerMenu, pausa, leerInput, listadoTareasBorrar, confirmar, listadoTareasCompletar } from './helpers/inquirer.js';
 import { Tareas } from './models/tareas.js';
 
 console.clear();
@@ -24,16 +24,36 @@ const main = async() => {
             case '1':
                 // Crear opcion
                 const descripcion = await leerInput('Descripcion: ');
-                console.log(descripcion);
                 tareas.crearTarea(descripcion);
             break;
 
             case '2':
-                console.log(tareas.listadoArray);
+                tareas.listadoCompleto();
+            break;
+            case '3':
+                tareas.listarPendientesCompletasas(true);
+            break;
+            case '4':
+                tareas.listarPendientesCompletasas(false);
+            break;
+            case '5':
+                const ids = await listadoTareasCompletar(tareas.listadoArray);
+                tareas.toggleCompletadas(ids);
+            break;
+            case '6':
+                const id = await listadoTareasBorrar(tareas.listadoArray);
+                if(id !== '0'){
+                    const confirmarBorrar = await confirmar('Esta seguro?'.yellow) 
+                    if(confirmarBorrar){
+                        tareas.borrarTarea(id);
+                        console.log('TAREA BORRADA CORRECTAMENTE'.bgRed);
+                    }
+                }
+
             break;
         }
 
-        // guardarDB(tareas.listadoArray);
+        guardarDB(tareas.listadoArray);
         await pausa();  
         
 
