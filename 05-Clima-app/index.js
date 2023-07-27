@@ -1,8 +1,7 @@
+import 'dotenv/config'
 import {inquirerMenu, leerInput, pausa} from "./helpers/inquirer.js"
 import { Busquedas } from "./models/busquedas.js";
 
-
-console.log(process.env);
 
 const main = async() => {
     let busquedas = new Busquedas
@@ -43,4 +42,4 @@ const main = async() => {
 
 }
 
-// main();
+main();

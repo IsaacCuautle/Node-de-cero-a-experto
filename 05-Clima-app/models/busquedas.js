@@ -9,7 +9,7 @@ class Busquedas {
 
     get ParamsMapBox(){
         return {
-            'access_token': ``
+            'access_token': process.env.MAP_BOX_KEY
         }
     }
 
