@@ -5,7 +5,8 @@
  - [ Requisitos para la instalacion](#requisitos)
  - [ Instalación](#instalación)
  - [ Imagenes de la aplicacion](#imagenes)
- - [ Tecnologias utilizadas](#tecnologias)
+ - [ Tecnologias  utilizadas](#tecnologias)
+ - [ Dependencias utilizadas](#dependencias)
 
 <div id='acerca_de'>
 
@@ -17,7 +18,7 @@ Esta es una pequeña aplicación por consola que permite guardar  una **lista de
 
 </div>
 
-</div id='requisitos'>
+<div id='requisitos'>
 
 ## Requisitos para la instalacion
 Para poder utilizar este proyecto es obligatorio descargar las siguientes herramientas:
@@ -45,13 +46,15 @@ Para utilizar el programa solo necesita seguir los estos pasos:
 
 <div id='tecnologias'></div>
 
-## Tecnologias Utilizadas
+## Tecnologias  utilizadas
  - ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)  `v 18.16.0`
  - ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)`v 9.5.1`
  - ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) `v 1.80.1`
  - ![Windows Terminal](https://camo.githubusercontent.com/bb423e977c6be89327b59332ac7b0805cdae20717330a55b9194a7d8e3bf1cb9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f57696e646f77732532305465726d696e616c2d2532333444344434442e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d77696e646f77732d7465726d696e616c266c6f676f436f6c6f723d7768697465) `v 1.17.11461.0`
  
- ## Dependencias utilizadas
+ <div id='dependencias'></div>
+ 
+ ## Dependencias
  - [uuid - v9.0.0](https://www.npmjs.com/package/uuid)
  - [colors - v1.4.0](https://www.npmjs.com/package/colors)
  - [inquirer- v9.2.7](https://www.npmjs.com/package/inquirer)
