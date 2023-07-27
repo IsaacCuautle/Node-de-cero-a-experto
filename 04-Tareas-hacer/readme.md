@@ -25,23 +25,41 @@ Para poder utilizar este proyecto es obligatorio descargar las siguientes herram
  - [ NODE JS](https://nodejs.org/en)
 - NPM ( Disponible desde el intalador de NODE )
 
-</div id='instalación'>
+<div id='instalación'/>
 
 ## Instalación
 Para utilizar el programa solo necesita seguir los estos pasos:
  1. [Descargue el proyecto](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/IsaacCuautle/Node-de-cero-a-experto/tree/main/04-Tareas-hacer)
  2. Descomprima el archivo descargado
-	 
+ 
+	<img src='https://github.com/IsaacCuautle/Node-de-cero-a-experto/assets/65583500/1e9f0e5f-c58a-4b57-8308-fc851ca8a0a9' width='400' />
  3. Ingrese en la carpeta producto de la descompresión, dentro de la carpeta  escriba **`CMD`** en la barra de direcciones de su administrador de archivos  y presione **`enter`**
- 5. Ingrese en la terminal el comando **`node init`**
+ 5. Ingrese en la terminal el comando **`npm install`**
+
+	<img src='https://github.com/IsaacCuautle/Node-de-cero-a-experto/assets/65583500/8dea8e8f-80c8-4df6-867d-bb935a3c05b1' width=400 />
  6. Una vez descargadas las dependencias escriba el comando **`node app.js`**
  7. Listo puede empezar a usar la aplicación
  
-</div>
 
-<div id='imagenes'>
+
+<div id='imagenes'/>
 
 ## Imágenes de la aplicación
+ - Menu principal
+
+   <img src='https://github.com/IsaacCuautle/Node-de-cero-a-experto/assets/65583500/ab92d053-0ea7-4a29-aa04-72889e08a678' width=400 />
+
+ - Crear Tareas
+   
+   <img src='https://github.com/IsaacCuautle/Node-de-cero-a-experto/assets/65583500/ff1cfbdb-37cd-4942-a88f-a544464b730a' width=400 />
+   
+ - Listar Tareas
+
+   <img src='https://github.com/IsaacCuautle/Node-de-cero-a-experto/assets/65583500/20776bf2-38ed-4e7d-b12a-d642a931c494' width=400 />
+
+ - Filtrar tareas completadas
+
+   <img src='https://github.com/IsaacCuautle/Node-de-cero-a-experto/assets/65583500/49bec38f-d4ec-4a67-928b-6fd8d7cec6b7' width=400 />
 
 
 <div id='tecnologias'></div>
