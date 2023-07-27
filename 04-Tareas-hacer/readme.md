@@ -11,7 +11,7 @@
 <div id='acerca_de'>
 
 ## Sobre la aplicación
-Esta es una pequeña aplicación por consola que permite guardar  una **lista de tareas pendientes** para poder marcarlas como  completarlas posteriormente, entre otras funciones tales como; 
+Esta es una pequeña aplicación por consola que permite guardar  una **lista de tareas pendientes** para poder marcarlas como  completadas posteriormente, entre otras funciones tales como; 
  - Marcar varias tareas como completadas o pendientes
  - Filtrar tareas por completadas o pendientes
  - Eliminar varias tareas
