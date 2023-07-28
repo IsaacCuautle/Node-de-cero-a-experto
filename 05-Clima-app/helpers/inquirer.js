@@ -72,26 +72,26 @@ const leerInput = async(message) => {
     return descripcion;
 }
 
-const listadoTareasBorrar = async(tareas = []) => {
+const listarLugares = async(lugares = []) => {
 
-    const choices = tareas.map((tarea,i) => {
+    const choices = lugares.map((lugar,i) => {
         const index = `${(i+1)+"."}`.green
         return {
-            value: tarea.id,
-            name: `${index} ${tarea.descripcion}`
+            value: lugar.id,
+            name: `${index} ${lugar.nombre}`
         }
     });
 
     choices.unshift({
-        value: '0',
-        name: '0. '.green +'cacelar'
+        value: 0,
+        name: '0. '.red +'Cacelar'.red
     })
     
     const preguntas = [
         {
             type: 'list',
             name: 'id',
-            message: 'Borrar',
+            message: 'Seleccione un lugar:',
             choices: choices
         }
     ]
@@ -136,4 +136,4 @@ const listadoTareasCompletar = async(tareas = []) => {
 }
 
 
-export {inquirerMenu,pausa, leerInput, listadoTareasBorrar, confirmar, listadoTareasCompletar}
+export {inquirerMenu,pausa, leerInput, listarLugares, confirmar, listadoTareasCompletar}

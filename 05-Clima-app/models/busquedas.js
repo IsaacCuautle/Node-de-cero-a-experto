@@ -22,12 +22,15 @@ class Busquedas {
                 params: this.ParamsMapBox
             })
 
-
-            const respuesta = await instance.get();
-            console.log(respuesta.data);
-
             // retorna las ubicaciones que coincidan con la busqueda
-            return [];
+            const respuesta = await instance.get();
+            return respuesta.data.features.map(lugar => ({
+               id: lugar.id,
+               nombre: lugar.place_name,
+               latitud: lugar.center[0],
+               longitud: lugar.center[1]
+            }));
+
         } catch (error) {
             return [];
         }
