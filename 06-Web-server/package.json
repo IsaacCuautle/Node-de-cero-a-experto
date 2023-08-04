@@ -1,0 +1,13 @@
+{
+  "name": "06-web-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [],
+  "author": "Cuautle Delgadillo Luis Isaac",
+  "license": "ISC"
+}
