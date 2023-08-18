@@ -1,3 +1,4 @@
+import "dotenv/config";
 import hbs from 'hbs';
 import express from "express";
 import * as url from 'url';
@@ -10,7 +11,7 @@ const app = express();
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partials');
 
-const port = 8080;
+const port = process.env.PORT;
 
 // Servir contenido estatico
 app.use(express.static('public'))
