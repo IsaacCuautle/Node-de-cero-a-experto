@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { userDelete, userGet, userPatch, userPost, userPut } from "../controllers/userController.js";
 import { check } from "express-validator";
-import { validarCampos } from "../middlewares/validar_campos.js";
+
+import { userDelete, userGet, userPatch, userPost, userPut } from "../controllers/userController.js";
+import { validarCampos, validateJWT, hasRole } from '../middlewares/index.js'
 import { validateEmail, validateRol, validateUserId } from "../helpers/validators.js";
 
 
@@ -31,6 +32,9 @@ router.put('/:id',[
 router.patch('/',userPatch);
 
 router.delete('/:id',[
+    validateJWT,
+    // isAdmin,
+    hasRole('ADMIN_ROLE','VENTAS_ROLE'),
     check('id', 'No es un id valido').isMongoId(),
     check('id').custom(validateUserId),
     validarCampos

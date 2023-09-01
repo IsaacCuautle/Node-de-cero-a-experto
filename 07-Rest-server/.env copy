@@ -1,1 +1,6 @@
 PORT = 
+
+# Mongo credentials
+USER=
+PASS=
+MONGODB_CNN=
