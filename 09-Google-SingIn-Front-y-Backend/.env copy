@@ -1,0 +1,12 @@
+PORT = 
+
+# Mongo 
+USER=
+PASS=
+MONGODB_CNN=
+
+# JWT
+SECRET_KEY=
+
+# GOOGLE
+GOOGLE_CLIENT =
