@@ -1,4 +1,4 @@
-import { Category,User } from "../models/index.js";
+import { Category,Product,User } from "../models/index.js";
 import { Role } from "../models/role.js";
 
 const validateRol = async(role = '' )=>{
@@ -31,10 +31,20 @@ const validateCategoryId = async(id) => {
     }  
 }
 
+// Validadores Productos
+
+const validateProductId = async(id) => {
+    const existProductId = await Product.findById(id);
+    if(!existProductId){
+        throw new Error(`El id ${id} no existe`);
+    }  
+}
+
 export
 {
     validateRol,
     validateEmail,
     validateUserId,
-    validateCategoryId
+    validateCategoryId,
+    validateProductId
 }

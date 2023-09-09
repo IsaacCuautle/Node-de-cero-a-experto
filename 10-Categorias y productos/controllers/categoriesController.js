@@ -40,6 +40,7 @@ const createCategories = async(req = request, res=response) => {
 
     // Generar la data a guardar
     const data = {
+        uid,
         name,
         user: req.user._id
     }

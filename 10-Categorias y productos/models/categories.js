@@ -21,9 +21,7 @@ const CategoryesSchema = Schema({
 })
 
 CategoryesSchema.methods.toJSON = function() {
-    const  { __v, _id, status, ...data} = this.toObject(); 
-     // Cambia visualmente el campo '_id' por 'uid'
-     Category.uid = _id;   
+    const  { __v, status, ...data} = this.toObject(); 
     return data;
 }
 const Category = model('Category',CategoryesSchema);
