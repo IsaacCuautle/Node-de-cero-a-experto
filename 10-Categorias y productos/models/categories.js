@@ -22,6 +22,7 @@ const CategoryesSchema = Schema({
 
 CategoryesSchema.methods.toJSON = function() {
     const  { __v, status, ...data} = this.toObject(); 
+    console.log(data);
     return data;
 }
 const Category = model('Category',CategoryesSchema);
