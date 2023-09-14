@@ -1,4 +1,4 @@
-import { response } from "express";
+import { request, response } from "express";
 import { User, Category, Product } from "../models/index.js";
 import { Types } from 'mongoose';
 
@@ -9,6 +9,7 @@ const coleccionesPermitidas = [
     'roles'
 ];
 
+// Buscar usuario por ID o por Nombre
 const buscarUsuarios = async(termino = '',res = response ) => {
     // Comprueba si es un ID de Mongo y devuelve el usuario al que corresponde dicho ID
     const esMongoId = Types.ObjectId.isValid(termino);
@@ -35,6 +36,60 @@ const buscarUsuarios = async(termino = '',res = response ) => {
 
 }
 
+// Buscar categoria por ID o por nombre
+const buscarCategorias = async(termino='',res=response) =>{
+    // Comprobar si se pasa un ID de Mongo
+    const esMongoID = Types.ObjectId.isValid(termino);
+    if(esMongoID)
+    {
+        const categoria = await Category.findById(termino).populate('user','name');
+        //? Si es un ID de Mongo y corresponde con una categoria regresa un Array con dicha categoria
+        //? De otro modo regresa un Array vacio 
+        return res.json({
+            results: (categoria) ? [categoria] : []
+        });
+    }
+
+
+    // Comprueba si se pasa una palabra 
+
+    // Expresion regular no sensitiva a Mayusculas
+    const regex = new RegExp(termino,'i');
+    // Busca la categoria segun el nombre
+    const categoria = await Category.find({name: regex})
+    res.json({
+        results: categoria
+    });
+}
+
+// Buscar Producto por ID o por nombre
+const buscarPoruductos = async(termino='',res=response) =>{
+    // Comprobar si se pasa un ID de Mongo
+    const esMongoID = Types.ObjectId.isValid(termino);
+    if(esMongoID)
+    {
+        const producto = await Product.findById(termino).populate('user','name').populate('category','name');
+        //? Si es un ID de Mongo y corresponde con un producto regresa un Array con dicho producto
+        //? De otro modo regresa un Array vacio 
+        return res.json({
+            results: (producto) ? [producto] : []
+        });
+    }
+
+
+    // Comprueba si se pasa una palabra 
+
+    // Expresion regular no sensitiva a Mayusculas
+    const regex = new RegExp(termino,'i');
+    // Busca el producto segun el nombre
+    const producto = await Product.find({name: regex}).populate('user','name').populate('category','name')
+    res.json({
+        results: producto
+    });
+}
+
+// Busca segun coleccion y termino
+// Ejemplo: /coleccion/termino
 const buscar = (req,res=response) => {
 
     const {coleccion,termino} = req.params;
@@ -53,10 +108,10 @@ const buscar = (req,res=response) => {
                 buscarUsuarios(termino,res);
             break;
         case 'categories':
-
+                buscarCategorias(termino,res);
             break;
         case 'products':
-
+                buscarPoruductos(termino,res);
             break;
         case 'roles':
 
