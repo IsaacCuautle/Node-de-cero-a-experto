@@ -7,7 +7,7 @@ import { cargarArchivos } from "../controllers/uploadsController.js";
 
 const router = Router();
 
-router.post('/',cargarArchivos);
+router.post('/',cargarArchivos );
 
 export
 {

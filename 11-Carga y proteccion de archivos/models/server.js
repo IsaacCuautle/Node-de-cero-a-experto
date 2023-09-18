@@ -7,6 +7,8 @@ import { router  as routerCategories} from "../routes/Categories.js";
 import { router  as routerProducts} from "../routes/products.js";
 import {router as routerBuscar} from "../routes/buscar.js"
 import {router as routerUploads} from "../routes/uploads.js"
+import fileUpload from 'express-fileupload';
+
 
 import {dbConection} from "../database/config.js"
 
@@ -52,6 +54,11 @@ class Server {
         // Lectura y Parseo
         this.app.use(express.json());
 
+        // Fileupload - Cargar archivos
+        this.app.use(fileUpload({
+            useTempFiles : true,
+            tempFileDir : '/tmp/'
+        }));
     }
 
     routes() {
