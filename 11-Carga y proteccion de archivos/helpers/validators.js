@@ -40,11 +40,23 @@ const validateProductId = async(id) => {
     }  
 }
 
+// Validar colecciones permitidas
+const coleccionesPermitidas = (coleccion='',colecciones=[]) =>{
+    const incluida = colecciones.includes(coleccion);
+    if(!incluida)
+    {
+        throw new Error(`La coleccion ${coleccion} no es permitida, ${colecciones}`);
+    }
+
+    return true;
+}
+
 export
 {
     validateRol,
     validateEmail,
     validateUserId,
     validateCategoryId,
-    validateProductId
+    validateProductId,
+    coleccionesPermitidas
 }
