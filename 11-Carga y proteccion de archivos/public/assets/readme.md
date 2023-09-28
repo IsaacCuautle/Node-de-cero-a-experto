@@ -1,0 +1,1 @@
+## Aqui van los recursos estaticos del servidor
