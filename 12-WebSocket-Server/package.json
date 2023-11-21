@@ -1,0 +1,17 @@
+{
+  "name": "12-websocket-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo app.js"
+  },
+  "author": "Luis Isaac Cuautle Delgadillo",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  },
+  "type": "module"
+}
