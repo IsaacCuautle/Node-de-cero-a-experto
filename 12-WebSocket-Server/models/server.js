@@ -1,17 +1,24 @@
 import express from "express";
-import cors from "cors"
-
+import cors from "cors";
+import {createServer} from "http";
+import { Server as ServerSoketIo } from "socket.io";
 
 class Server {
 
     constructor(){
         this.app = express();
-        this.port = process.env.PORT;
+        this.port = process.env.PORT || 8080;
+        this.server = createServer(this.app);
+        this.io = new ServerSoketIo(this.server)
+        
+        // Moddlewares
         this.middlewares();
-        this.paths = {} 
         
         // Rutas de la aplicaccion
         this.routes();
+
+        // Configuracion de Sockets
+        this.sockets();
     }
 
 
@@ -28,8 +35,17 @@ class Server {
         // this.app.use(this.paths.users, routerUser); 
     }
 
+    sockets(){
+        this.io.on('connection',socket => {
+            console.log("cliente conectado ",socket.id);
+            socket.on('disconnect', ()=>{
+                console.log('cleinte desconectado', socket.id);
+            })
+        });
+    }
+
     listenPort() {
-        this.app.listen(this.port, () => {
+        this.server.listen(this.port, () => {
             console.log('Corriendo en el puerto: '+this.port);
         })
     }
