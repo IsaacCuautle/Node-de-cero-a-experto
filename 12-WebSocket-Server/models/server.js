@@ -3,6 +3,7 @@ import cors from "cors";
 import {createServer} from "http";
 import { Server as ServerSoketIo } from "socket.io";
 
+
 class Server {
 
     constructor(){
@@ -37,16 +38,17 @@ class Server {
 
     sockets(){
         this.io.on('connection',socket => {
-            console.log("cliente conectado ",socket.id);
+            // console.log("Cliente conectado ",socket.id);
             
-            socket.on('disconnect', ()=>{
-                console.log('cleinte desconectado', socket.id);
+            socket.on('disconnect', () => {
+                // console.log('Cliente desconectado', socket.id);
             });
 
-            socket.on('enviar-mensaje',(payload)=>{
-                console.log(payload);
+            socket.on('enviar-mensaje',(payload, callback)=>{
+                const id = 'enviado';
+                callback(id);
+                // this.io.emit('enviar-mensaje',payload);
             })
-
         });
     }
 
