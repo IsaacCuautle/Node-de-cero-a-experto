@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import {createServer} from "http";
 import { Server as ServerSoketIo } from "socket.io";
-
+import { socketController } from "../sockets/controller.js";
 
 class Server {
 
@@ -37,19 +37,7 @@ class Server {
     }
 
     sockets(){
-        this.io.on('connection',socket => {
-            // console.log("Cliente conectado ",socket.id);
-            
-            socket.on('disconnect', () => {
-                // console.log('Cliente desconectado', socket.id);
-            });
-
-            socket.on('enviar-mensaje',(payload, callback)=>{
-                const id = 'enviado';
-                callback(id);
-                // this.io.emit('enviar-mensaje',payload);
-            })
-        });
+        this.io.on('connection',socketController);
     }
 
     listenPort() {
