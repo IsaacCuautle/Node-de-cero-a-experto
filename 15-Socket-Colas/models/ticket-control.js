@@ -30,14 +30,14 @@ class TicketControl {
         return {
             ultimo: this.ultimo,
             hoy: this.hoy,
-            tickets: this.tickets,
-            ultimos4: this.ultimos4
+            ultimos4: this.ultimos4,
+            tickets: this.tickets
         }
     }
 
     // Comprueba si es otro dia o solo se esta reiniciando
     init() {
-        const {hoy, tickets, ultimo, ultimos4} = data;
+        let {hoy, tickets, ultimo, ultimos4} = data;
         if(hoy === this.hoy){
             this.tickets = tickets;
             this.ultimo = ultimo;
@@ -63,13 +63,12 @@ class TicketControl {
 
     atenderTicket(escritorio){
         // No hay tickets
-        if(this.tickets.length === 0){
+        if(this.tickets.length == 0){
             return null;
         }
 
         const ticket = this.tickets.shift();
         ticket.escritorio = escritorio;
-
         this.ultimos4.unshift(ticket);
 
         if (this.ultimos4.length > 4) {
