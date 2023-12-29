@@ -1,0 +1,10 @@
+node_modules
+
+.env
+/.env
+
+uploads/imgs/
+uploads/textos/
+uploads/productos/
+uploads/usuarios/
+/public/assets/*.jpg
