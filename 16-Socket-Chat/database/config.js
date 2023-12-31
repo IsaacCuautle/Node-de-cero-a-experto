@@ -1,4 +1,4 @@
-import  {mongoose,  Error } from "mongoose";
+import  {mongoose} from "mongoose";
 
 const dbConection = async() => {
     try {

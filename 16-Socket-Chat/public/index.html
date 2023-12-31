@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -31,47 +30,22 @@
                 SignOut
             </button>
         </div>
+
         <!-- Auth propia -->
         <div class="col-sm-6">
-
+            <h1>Sign-In with E-mail and Password</h1>
+            <br>
+            <form action="" class="d-grid">
+                <input type="text" name="email" id="" class="form-control mb-2" placeholder="Tu E-mail">
+            <input type="text" name="password" id="" class="form-control mb-2" placeholder="Tu Password">
+            <button class="btn btn-primary" type="submit">LOG IN</button>
+            </form>
+            
         </div>
     </div>
-
-
      <script src="https://accounts.google.com/gsi/client" async defer>
         </script>
-        <script>
-            function handleCredentialResponse(response) {
-
-                // Google Token - ID token
-                // console.log('ID Token: '+response.credential);
-                const body = { id_token: response.credential }
-
-                fetch('http://localhost:8080/api/auth/google', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type':
-                            'application/json'
-                    },
-                    body: JSON.stringify(body)
-                })
-                    .then(resp => resp.json())
-                    .then(resp => {
-                        console.log(resp);
-                        localStorage.setItem('email', resp.user.email)
-                    })
-                    .catch(console.warn);
-            }
-
-            const signoutBtn = document.getElementById('google_signout');
-            signoutBtn.onclick = () => {
-                google.accounts.id.disableAutoSelect();
-                google.accounts.id.revoke(localStorage.getItem('email'), done => {
-                    localStorage.clear();
-                    location.reload()
-                })
-            }
-        </script>
+    <script src="./authGoogle.js"></script>
 
 </body>
 
