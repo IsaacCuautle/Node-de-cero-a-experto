@@ -16,7 +16,7 @@ fetch(url+'google', {
     })
         .then(resp => resp.json())
         .then(({token}) => {
-            localStorage.setItem('token',token);
+            localStorage.setItem("token",token);
         })
         .catch(console.warn);
 }
@@ -40,8 +40,13 @@ formulario.addEventListener('submit',ev => {
         headers: {'Content-Type': 'application/json'}
     })
     .then( resp => resp.json())
-    .then( data => {
-        console.log(data);
+    .then( ({msg, token}) => {
+        if(msg)
+        {
+            return console.log(msg);
+        }
+
+        localStorage.setItem("token",token);
     })
     .catch( err => {
         console.log(err);
