@@ -25,7 +25,7 @@ const comporbarJWT = async(token = '') => {
         if(token.length < 10){
             return null
         }
-
+        
         const {uid} = jsonwebtoken.verify(token,process.env.SECRET_KEY);
         const usuario = await User.findById(uid);
 

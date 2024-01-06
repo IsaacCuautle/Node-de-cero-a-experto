@@ -1,3 +1,6 @@
+
+
+
 let user = null;
 let socket = null;
 const url = 'http://localhost:8080/api/auth/'
@@ -12,6 +15,8 @@ const btnSalir = document.querySelector('#btnSalir')
 // Vlidar token el local storage
 const validarJWT = async() => {
     const token = localStorage.getItem("token") || "";
+    
+    
     if(token.length <= 10) {
         window.location = 'index.html'
         throw new Error('No hay token en el servidor');
@@ -51,14 +56,30 @@ const conectarSocket = async() => {
     })
 
     // Desplegar usuarios activos
-    socket.on('usuarios-activos',() =>{
-        // TODO
-    })
+    socket.on('usuarios-activos',dibujarUsuarios);
+
 
     // Mensajes privados
     socket.on('mensaje-privado',() =>{
         // TODO
     })
+}
+
+const dibujarUsuarios = (usuarios = []) =>{
+    let usersHtml = '';
+    usuarios.forEach(({uid,name}) => {
+        usersHtml += `
+            <li>
+                <p>
+                    <h5 class="text-success">${name}</h5>
+                    <span class="fs-6 text-muted">${uid}</span>
+                </p>
+            </li>
+        
+        `;
+    });
+
+    ulUsuarios.innerHTML = usersHtml;
 }
 
 const main = async() => {
