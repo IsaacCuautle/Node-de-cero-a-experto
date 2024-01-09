@@ -1,6 +1,7 @@
 import jsonwebtoken from "jsonwebtoken"
 import "dotenv/config";
 import { User } from "../models/index.js";
+import { renovarToken } from "../controllers/authController.js";
 
 const genJWT = (uid = '') => {
     return new Promise((resolve,reject) => {
@@ -22,11 +23,16 @@ const genJWT = (uid = '') => {
 
 const comporbarJWT = async(token = '') => {
     try {
+
+
         if(token.length < 10){
             return null
         }
         
+        
         const {uid} = jsonwebtoken.verify(token,process.env.SECRET_KEY);
+
+        
         const usuario = await User.findById(uid);
 
         if(usuario)

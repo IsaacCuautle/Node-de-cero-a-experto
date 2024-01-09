@@ -98,7 +98,7 @@ const googleSignIn = async( req=request, res=response ) => {
 }
 
 
-const renovarToken = async(req,res = response ) => {
+const renovarToken = async(req = request,res = response ) => {
     const {user} = req;
 
     // Generar el JWT

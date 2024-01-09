@@ -51,9 +51,7 @@ const conectarSocket = async() => {
     });
 
     // Recibir Mensaje
-    socket.on('recibir-mensajes',() =>{
-        // TODO
-    })
+    socket.on('recibir-mensajes',dibujarMensajes);
 
     // Desplegar usuarios activos
     socket.on('usuarios-activos',dibujarUsuarios);
@@ -65,6 +63,7 @@ const conectarSocket = async() => {
     })
 }
 
+// Despliega en pantalla los usuarios conectados y su uid
 const dibujarUsuarios = (usuarios = []) =>{
     let usersHtml = '';
     usuarios.forEach(({uid,name}) => {
@@ -81,6 +80,37 @@ const dibujarUsuarios = (usuarios = []) =>{
 
     ulUsuarios.innerHTML = usersHtml;
 }
+
+// Despliega en pantalla los mesnajes 
+const dibujarMensajes = (mensajes = []) =>{
+    let mensajesHtml = '';
+    mensajes.forEach(({nombre,mensaje}) => {
+        mensajesHtml += `
+            <li>
+                <p>
+                    <span class="text-primary">${nombre}: </span>
+                    <span>${mensaje}</span>
+                </p>
+            </li>
+        
+        `;
+    });
+
+    ulMensajes.innerHTML = mensajesHtml;
+}
+
+
+txtMensaje.addEventListener('keyup',({keyCode}) => {
+    const mensaje = txtMensaje.value;
+    const uid = txtUid.value;
+    if(keyCode != 13) return;
+    if(mensaje.length === 0) return;
+
+    socket.emit('enviar-mensaje',{mensaje,uid});
+    txtMensaje.value = '';
+
+})
+
 
 const main = async() => {
 

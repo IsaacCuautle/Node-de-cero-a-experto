@@ -16,7 +16,7 @@ class ChatMensajes {
 
     get Ultimos10() {
         this.mensajes = this.mensajes.splice(0,10);
-        return this.Ultimos10;
+        return this.mensajes;
     }
 
     get usuariosArr() {
