@@ -56,11 +56,10 @@ const conectarSocket = async() => {
     // Desplegar usuarios activos
     socket.on('usuarios-activos',dibujarUsuarios);
 
-
     // Mensajes privados
-    socket.on('mensaje-privado',() =>{
-        // TODO
-    })
+    socket.on('mensaje-privado',(payload) =>{
+       console.log('privado ',payload);
+    });
 }
 
 // Despliega en pantalla los usuarios conectados y su uid
