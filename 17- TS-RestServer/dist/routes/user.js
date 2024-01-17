@@ -6,7 +6,7 @@ const router = (0, express_1.Router)();
 router.get('/', userController_1.getUsers);
 router.get('/:id', userController_1.getUser);
 router.post('/', userController_1.postUser);
-router.put('/', userController_1.putUser);
-router.delete('/', userController_1.deleteUser);
+router.put('/:id', userController_1.putUser);
+router.delete('/:id', userController_1.deleteUser);
 exports.default = router;
 //# sourceMappingURL=user.js.map
