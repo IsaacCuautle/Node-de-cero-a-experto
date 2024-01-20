@@ -36,6 +36,16 @@ exports.getUser = getUser;
 const postUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { body } = req;
     try {
+        const existEmail = yield user_1.default.findOne({
+            where: {
+                email: body.email
+            }
+        });
+        if (existEmail) {
+            return res.status(500).json({
+                msg: `Ya existe un usuario con el email ${body.email}`
+            });
+        }
         const user = new user_1.default(body);
         yield user.save();
         res.json(user);
@@ -49,15 +59,36 @@ const postUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.postUser = postUser;
 // Actualizar un usuario
-const putUser = (req, res) => {
+const putUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const { body } = req;
-    res.json({
-        msg: "From putUser - userController",
-        body,
-        id
-    });
-};
+    try {
+        const user = yield user_1.default.findByPk(id);
+        if (!user) {
+            return res.status(404).json({
+                msg: `No existe un usuario con id ${id}`
+            });
+        }
+        const existEmail = yield user_1.default.findOne({
+            where: {
+                email: body.email
+            }
+        });
+        if (existEmail) {
+            return res.status(500).json({
+                msg: `Ya existe un usuario con el email ${body.email}`
+            });
+        }
+        yield user.update(body);
+        res.json({ user });
+    }
+    catch (error) {
+        console.log(`A ocurrido un error ${error}`);
+        res.status(500).json({
+            msg: 'A ocurrido un error - Hable con el administrador'
+        });
+    }
+});
 exports.putUser = putUser;
 // Eliminar un usuario
 const deleteUser = (req, res) => {
