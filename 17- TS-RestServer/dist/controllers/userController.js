@@ -91,12 +91,27 @@ const putUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.putUser = putUser;
 // Eliminar un usuario
-const deleteUser = (req, res) => {
+const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    res.json({
-        msg: "From deleteUser - userController",
-        id
-    });
-};
+    try {
+        const user = yield user_1.default.findByPk(id);
+        if (!user) {
+            return res.status(404).json({
+                msg: `No existe un usuario con id ${id}`
+            });
+        }
+        // Eliminacion definitiva
+        //await user.destroy();
+        // Eliminacion logica
+        yield user.update({ status: false });
+        res.json({ user });
+    }
+    catch (error) {
+        console.log(`A ocurrido un error ${error}`);
+        res.status(500).json({
+            msg: 'A ocurrido un error - Hable con el administrador'
+        });
+    }
+});
 exports.deleteUser = deleteUser;
 //# sourceMappingURL=userController.js.map

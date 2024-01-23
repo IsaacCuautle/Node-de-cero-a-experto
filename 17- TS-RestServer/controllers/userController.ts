@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response, request } from "express";
 import User from "../models/user";
 
 
@@ -6,7 +6,6 @@ import User from "../models/user";
 const getUsers = async(req:Request, res: Response) =>{
 
     const users = await User.findAll();
-
     res.json(users);
 }
 
@@ -90,12 +89,29 @@ const putUser = async(req:Request, res: Response) =>{
 }
 
 // Eliminar un usuario
-const deleteUser = (req:Request, res: Response) =>{
+const deleteUser = async(req:Request, res: Response) =>{
     const {id} = req.params;
-    res.json({
-        msg: "From deleteUser - userController",
-        id
-    })
+    try {
+        const user = await User.findByPk(id);
+        if(!user){
+            return res.status(404).json({
+                msg: `No existe un usuario con id ${id}`
+            })
+        }
+
+        // Eliminacion definitiva
+        //await user.destroy();
+
+        // Eliminacion logica
+        await user.update({status: false})
+        res.json({user})
+
+    } catch (error) {
+        console.log(`A ocurrido un error ${error}`);
+            res.status(500).json({
+            msg: 'A ocurrido un error - Hable con el administrador'
+        })
+    }
 }
 
 
